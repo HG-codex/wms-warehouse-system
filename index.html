@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WMS 仓库管理系统</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-icon">W</div>
+          <div>
+            <div class="brand-title">WMS-仓库</div>
+            <div class="brand-subtitle">物流运营中心</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-target="overview">
+            <span>📊</span>
+            <span>总览</span>
+          </button>
+          <button class="nav-item" data-target="orders">
+            <span>🧾</span>
+            <span>订单管理</span>
+          </button>
+          <button class="nav-item" data-target="inventory">
+            <span>📦</span>
+            <span>库存管理</span>
+          </button>
+          <button class="nav-item" data-target="picking">
+            <span>🚚</span>
+            <span>拣货任务</span>
+          </button>
+          <button class="nav-item" data-target="dispatch">
+            <span>🚀</span>
+            <span>出库发货</span>
+          </button>
+          <button class="nav-item" data-target="reports">
+            <span>📈</span>
+            <span>报表分析</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="mini-card">
+            <div class="mini-label">今日效率</div>
+            <div class="mini-value">92.4%</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="topbar-kicker">仓储运营中心</div>
+            <h1>WMS 仓库管理系统</h1>
+          </div>
+          <div class="topbar-right">
+            <div class="pill">2026-09-19</div>
+            <div class="pill warning">12 个异常待处理</div>
+          </div>
+        </header>
+
+        <section class="page active" id="overview">
+          <div class="stats-grid">
+            <div class="stat-card accent-blue">
+              <div class="stat-label">今日订单</div>
+              <div class="stat-value">1,284</div>
+              <div class="stat-foot">较昨日 +8.6%</div>
+            </div>
+            <div class="stat-card accent-green">
+              <div class="stat-label">复核完成率</div>
+              <div class="stat-value">96.3%</div>
+              <div class="stat-foot">高于目标 3.8%</div>
+            </div>
+            <div class="stat-card accent-orange">
+              <div class="stat-label">缺货 SKU</div>
+              <div class="stat-value">24</div>
+              <div class="stat-foot">其中 7 个需加急补货</div>
+            </div>
+            <div class="stat-card accent-purple">
+              <div class="stat-label">准时出库率</div>
+              <div class="stat-value">94.1%</div>
+              <div class="stat-foot">较上周 +2.3%</div>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h2>仓库作业效率</h2>
+                <span class="panel-tag">按区域统计</span>
+              </div>
+              <div class="bars-wrap">
+                <div class="bar-row">
+                  <span>拣货区</span>
+                  <div class="bar-track"><div class="bar-fill blue" style="width:88%"></div></div>
+                  <strong>88%</strong>
+                </div>
+                <div class="bar-row">
+                  <span>包装区</span>
+                  <div class="bar-track"><div class="bar-fill green" style="width:79%"></div></div>
+                  <strong>79%</strong>
+                </div>
+                <div class="bar-row">
+                  <span>复核区</span>
+                  <div class="bar-track"><div class="bar-fill orange" style="width:72%"></div></div>
+                  <strong>72%</strong>
+                </div>
+                <div class="bar-row">
+                  <span>出库区</span>
+                  <div class="bar-track"><div class="bar-fill purple" style="width:91%"></div></div>
+                  <strong>91%</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h2>关键流程</h2>
+                <span class="panel-tag">当前阶段</span>
+              </div>
+              <div class="step-flow">
+                <div class="step-item ok">
+                  <div class="step-num">1</div>
+                  <div>订单接收</div>
+                </div>
+                <div class="step-item ok">
+                  <div class="step-num">2</div>
+                  <div>库存锁定</div>
+                </div>
+                <div class="step-item current">
+                  <div class="step-num">3</div>
+                  <div>拣货执行</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">4</div>
+                  <div>复核包装</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">5</div>
+                  <div>出库发货</div>
+                </div>
+              </div>
+              <div class="info-box">
+                重点提醒：A区热销SKU库存覆盖率已低于安全库存阈值，建议在 2 小时内执行补货，并同步调整拣货波次。
+              </div>
+            </div>
+          </div>
+
+          <div class="table-panel panel">
+            <div class="panel-header">
+              <h2>待处理订单</h2>
+              <span class="panel-tag">最近 5 单</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>订单号</th>
+                    <th>区域</th>
+                    <th>状态</th>
+                    <th>金额</th>
+                    <th>承诺时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ORD-20983</td>
+                    <td>北美仓</td>
+                    <td><span class="status high">拣货中</span></td>
+                    <td>¥1,236.00</td>
+                    <td>09:30</td>
+                  </tr>
+                  <tr>
+                    <td>ORD-20984</td>
+                    <td>欧洲仓</td>
+                    <td><span class="status warn">缺货</span></td>
+                    <td>¥860.00</td>
+                    <td>10:00</td>
+                  </tr>
+                  <tr>
+                    <td>ORD-20985</td>
+                    <td>东南亚仓</td>
+                    <td><span class="status ok">待发货</span></td>
+                    <td>¥640.00</td>
+                    <td>11:15</td>
+                  </tr>
+                  <tr>
+                    <td>ORD-20986</td>
+                    <td>国内仓</td>
+                    <td><span class="status ok">复核完成</span></td>
+                    <td>¥1,520.00</td>
+                    <td>12:10</td>
+                  </tr>
+                  <tr>
+                    <td>ORD-20987</td>
+                    <td>北美仓</td>
+                    <td><span class="status high">包装中</span></td>
+                    <td>¥980.00</td>
+                    <td>12:40</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="orders">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>订单管理</h2>
+              <div class="header-actions">
+                <button class="btn ghost">导出</button>
+                <button class="btn primary">新建订单</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>订单号</th>
+                    <th>客户</th>
+                    <th>区域</th>
+                    <th>状态</th>
+                    <th>金额</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="orderTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="inventory">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>库存管理</h2>
+              <div class="header-actions">
+                <button class="btn ghost">盘点</button>
+                <button class="btn primary">补货申请</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>商品名</th>
+                    <th>库位</th>
+                    <th>可用库存</th>
+                    <th>锁定库存</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="picking">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>拣货任务</h2>
+              <div class="header-actions">
+                <button class="btn ghost">生成波次</button>
+                <button class="btn primary">分配拣货员</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>任务号</th>
+                    <th>订单号</th>
+                    <th>拣货员</th>
+                    <th>库位</th>
+                    <th>数量</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody id="pickingTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="dispatch">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>出库发货</h2>
+              <div class="header-actions">
+                <button class="btn ghost">生成面单</button>
+                <button class="btn primary">确认出库</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>出库单</th>
+                    <th>订单号</th>
+                    <th>承运商</th>
+                    <th>物流单号</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody id="dispatchTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="reports">
+          <div class="report-grid">
+            <div class="panel report-box">
+              <div class="panel-header">
+                <h2>订单履约分析</h2>
+              </div>
+              <div class="report-figure">
+                <div class="donut" style="--percent:76">
+                  <span>76%</span>
+                </div>
+                <div class="report-metric">
+                  <div><strong>按时发货</strong></div>
+                  <div>超时订单：48</div>
+                  <div>目标：85%</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel report-box">
+              <div class="panel-header">
+                <h2>库存周转</h2>
+              </div>
+              <div class="report-figure">
+                <div class="donut orange" style="--percent:68">
+                  <span>68%</span>
+                </div>
+                <div class="report-metric">
+                  <div><strong>周转效率</strong></div>
+                  <div>库存天数：18.4</div>
+                  <div>目标：15天</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top: 20px;">
+            <div class="panel-header">
+              <h2>异常原因分布</h2>
+            </div>
+            <div class="bars-wrap">
+              <div class="bar-row">
+                <span>库存不足</span>
+                <div class="bar-track"><div class="bar-fill blue" style="width:54%"></div></div>
+                <strong>54%</strong>
+              </div>
+              <div class="bar-row">
+                <span>拣货差异</span>
+                <div class="bar-track"><div class="bar-fill orange" style="width:28%"></div></div>
+                <strong>28%</strong>
+              </div>
+              <div class="bar-row">
+                <span>运输延迟</span>
+                <div class="bar-track"><div class="bar-fill green" style="width:12%"></div></div>
+                <strong>12%</strong>
+              </div>
+              <div class="bar-row">
+                <span>其他</span>
+                <div class="bar-track"><div class="bar-fill purple" style="width:6%"></div></div>
+                <strong>6%</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
