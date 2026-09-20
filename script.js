@@ -64,7 +64,6 @@ function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (!saved) return deepClone(defaultState);
-
     const parsed = JSON.parse(saved);
     return {
       ...deepClone(defaultState),
@@ -414,15 +413,11 @@ function bindActions() {
   document.querySelectorAll('[data-action]').forEach(btn => {
     btn.addEventListener('click', (event) => {
       const action = event.currentTarget.dataset.action;
-      if (action === 'apply-replenishment') submitReplenishment();
+      if (action === 'apply-replenishment') applyReplenishment();
       if (action === 'generate-waybill') generateWaybill();
       if (action === 'confirm-outbound') confirmOutbound();
     });
   });
-}
-
-function submitReplenishment() {
-  applyReplenishment();
 }
 
 function init() {
